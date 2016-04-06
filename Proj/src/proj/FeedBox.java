@@ -18,6 +18,7 @@ public class FeedBox extends javax.swing.JFrame {
     private static final String PASSWORD="1234";
     private static final String CONN_STRING="jdbc:mysql://localhost:3306/time_analyzer?autoReconnect=true&useSSL=false";
     public String emp_id_val;
+    public int hrs;
     public FeedBox() {
         initComponents();
     }
@@ -34,6 +35,11 @@ public class FeedBox extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         NameField = new javax.swing.JTextField();
         Start = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Hours = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        Prev = new javax.swing.JButton();
+        Register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,34 +58,81 @@ public class FeedBox extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Amount of Hours Spent Today");
+
+        Hours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HoursActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Name");
+
+        Prev.setText("View Previous");
+        Prev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrevActionPerformed(evt);
+            }
+        });
+
+        Register.setText("Done");
+        Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(Start)))))
-                .addContainerGap(204, Short.MAX_VALUE))
+                                .addGap(109, 109, 109)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Start))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(27, 27, 27)
+                                .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(Prev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Register)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Start))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
-                .addComponent(Start)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Prev)
+                    .addComponent(Register))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,8 +154,10 @@ public class FeedBox extends javax.swing.JFrame {
             System.out.println(emp_id_val);
             print_name = "SELECT * FROM Employee where emp_id='"+emp_id_val+"';";
             ResultSet rs = stmt.executeQuery(print_name);
-            //NameField.setText(rs.getString("Name"));
-            System.out.println(rs.getString("Name"));
+            if(rs.next()){
+            NameField.setText(rs.getString("Name"));
+            }
+            NameField.setEditable(false);
 
         }
             
@@ -111,6 +166,18 @@ public class FeedBox extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_StartActionPerformed
+
+    private void HoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoursActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HoursActionPerformed
+
+    private void PrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrevActionPerformed
+
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,8 +215,13 @@ public class FeedBox extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Hours;
     public static javax.swing.JTextField NameField;
+    private javax.swing.JButton Prev;
+    private javax.swing.JButton Register;
     private javax.swing.JButton Start;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
