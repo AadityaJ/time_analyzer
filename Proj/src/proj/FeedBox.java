@@ -168,7 +168,7 @@ public class FeedBox extends javax.swing.JFrame {
     }//GEN-LAST:event_StartActionPerformed
 
     private void HoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoursActionPerformed
-        // TODO add your handling code here:
+        hrs=Integer.parseInt(Hours.getText());
     }//GEN-LAST:event_HoursActionPerformed
 
     private void PrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevActionPerformed
@@ -176,7 +176,24 @@ public class FeedBox extends javax.swing.JFrame {
     }//GEN-LAST:event_PrevActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        // TODO add your handling code here:
+        Connection conn = null;
+       /* try{
+            conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
+            Statement stmt =(Statement) conn.createStatement();
+            String print_name;
+            System.out.println(emp_id_val);
+            print_name = "SELECT * FROM Employee where emp_id='"+emp_id_val+"';";
+            ResultSet rs = stmt.executeQuery(print_name);
+            if(rs.next()){
+            NameField.setText(rs.getString("Name"));
+            }
+            NameField.setEditable(false);
+
+        }
+            
+        catch(SQLException e){
+            System.out.println("Didnot happen"+e);
+        }*/
     }//GEN-LAST:event_RegisterActionPerformed
 
     /**
