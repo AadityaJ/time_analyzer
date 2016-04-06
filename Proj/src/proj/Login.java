@@ -121,6 +121,7 @@ public class Login extends javax.swing.JFrame {
             if(rs.next()){
                 System.out.println("Logged In");
                 // go to next jframe
+                
             }
             else {
                 System.out.println("Not Logged In");
