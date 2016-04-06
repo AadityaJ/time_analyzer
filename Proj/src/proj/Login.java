@@ -10,6 +10,7 @@ package proj;
  * @author aaditya
  */
 import java.sql.*;
+import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -116,16 +117,20 @@ public class Login extends javax.swing.JFrame {
             conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
             Statement stmt =(Statement) conn.createStatement();
             String print_val;
-            print_val = "SELECT * FROM PASSWORD where emp_id='"+emp_id_num+"' and password='"+pass+"'";
+            print_val = "SELECT * FROM PASSWORD where emp_id='"+emp_id_num+"' and password='"+pass+"';";
             ResultSet rs = stmt.executeQuery(print_val);
             if(rs.next()){
-                System.out.println("Logged In");
+                //System.out.println("Logged In");
                 // go to next jframe
-                
+                //usd emp_id to get to the next form
+                FeedBox f= new FeedBox();
+                f.setVisible(true);
+                f.emp_id_val=this.emp_id_num;
             }
             else {
-                System.out.println("Not Logged In");
+                //System.out.println("Not Logged In");
                 //retry
+                JOptionPane.showMessageDialog(null,"Invalid Id Password combo .Please Try Again .");
             }
 
         }
