@@ -240,6 +240,7 @@ public class FeedBox extends javax.swing.JFrame {
             TypeField.setText(type_real);
             }
             NameField.setEditable(false);
+            TypeField.setEditable(false);
 
         }
             
