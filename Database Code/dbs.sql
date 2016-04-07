@@ -1,70 +1,50 @@
-1001,07/04/16,9
-1002,07/04/16,8
-1003,07/04/16,7
-1004,07/04/16,8
-1005,07/04/16,9
-1001,08/04/16,6
-1002,08/04/16,5
-1003,08/04/16,8
-1004,08/04/16,9
-1005,08/04/16,11
-1001,11/04/16,4
-1002,11/04/16,7
-1003,11/04/16,8
-1004,11/04/16,0
-1005,11/04/16,10
-1001,12/04/16,7
-1002,12/04/16,6
-1003,12/04/16,5
-1004,12/04/16,8
-1005,12/04/16,9
-1001,13/04/16,8
-1002,13/04/16,7
-1003,13/04/16,9
-1004,13/04/16,10
-1005,13/04/16,11
-1001,14/04/16,12
-1002,14/04/16,3
-1003,14/04/16,7
-1004,14/04/16,8
-1005,14/04/16,10
-1001,15/04/16,11
-1002,15/04/16,10
-1003,15/04/16,9
-1004,15/04/16,7
-1005,15/04/16,8
-1001,18/04/16,6
-1002,18/04/16,9
-1003,18/04/16,6
-1004,18/04/16,7
-1005,18/04/16,8
-1001,19/04/16,11
-1002,19/04/16,10
-1003,19/04/16,9
-1004,19/04/16,8
-1005,19/04/16,5
-1001,20/04/16,8
-1002,20/04/16,9
-1003,20/04/16,10
-1004,20/04/16,11
-1005,20/04/16,12
-1001,21/04/16,10
-1002,21/04/16,7
-1003,21/04/16,6
-1004,21/04/16,5
-1005,21/04/16,7
-1001,22/04/16,8
-1002,22/04/16,10
-1003,22/04/16,12
-1004,22/04/16,12
-1005,22/04/16,12
-1001,25/04/16,9
-1002,25/04/16,10
-1003,25/04/16,5
-1004,25/04/16,5
-1005,25/04/16,5
-1001,26/04/16,9
-1002,26/04/16,5
-1003,26/04/16,4
-1004,26/04/16,5
-1005,26/04/16,6
+Insert into date_log values ('1001', '2016/04/13', '8');
+Insert into date_log values ('1002', '2016/04/13', '7');
+Insert into date_log values ('1003', '2016/04/13', '9');
+Insert into date_log values ('1004', '2016/04/13', '10');
+Insert into date_log values ('1005', '2016/04/13', '11');
+Insert into date_log values ('1001', '2016/04/14', '12');
+Insert into date_log values ('1002', '2016/04/14', '3');
+Insert into date_log values ('1003', '2016/04/14', '7');
+Insert into date_log values ('1004', '2016/04/14', '8');
+Insert into date_log values ('1005', '2016/04/14', '10');
+Insert into date_log values ('1001', '2016/04/15', '11');
+Insert into date_log values ('1002', '2016/04/15', '10');
+Insert into date_log values ('1003', '2016/04/15', '9');
+Insert into date_log values ('1004', '2016/04/15', '7');
+Insert into date_log values ('1005', '2016/04/15', '8');
+Insert into date_log values ('1001', '2016/04/18', '6');
+Insert into date_log values ('1002', '2016/04/18', '9');
+Insert into date_log values ('1003', '2016/04/18', '6');
+Insert into date_log values ('1004', '2016/04/18', '7');
+Insert into date_log values ('1005', '2016/04/18', '8');
+Insert into date_log values ('1001', '2016/04/19', '11');
+Insert into date_log values ('1002', '2016/04/19', '10');
+Insert into date_log values ('1003', '2016/04/19', '9');
+Insert into date_log values ('1004', '2016/04/19', '8');
+Insert into date_log values ('1005', '2016/04/19', '5');
+Insert into date_log values ('1001', '2016/04/20', '8');
+Insert into date_log values ('1002', '2016/04/20', '9');
+Insert into date_log values ('1003', '2016/04/20', '10');
+Insert into date_log values ('1004', '2016/04/20', '11');
+Insert into date_log values ('1005', '2016/04/20', '12');
+Insert into date_log values ('1001', '2016/04/21', '10');
+Insert into date_log values ('1002', '2016/04/21', '7');
+Insert into date_log values ('1003', '2016/04/21', '6');
+Insert into date_log values ('1004', '2016/04/21', '5');
+Insert into date_log values ('1005', '2016/04/21', '7');
+Insert into date_log values ('1001', '2016/04/22', '8');
+Insert into date_log values ('1002', '2016/04/22', '10');
+Insert into date_log values ('1003', '2016/04/22', '12');
+Insert into date_log values ('1004', '2016/04/22', '12');
+Insert into date_log values ('1005', '2016/04/22', '12');
+Insert into date_log values ('1001', '2016/04/25', '9');
+Insert into date_log values ('1002', '2016/04/25', '10');
+Insert into date_log values ('1003', '2016/04/25', '5');
+Insert into date_log values ('1004', '2016/04/25', '5');
+Insert into date_log values ('1005', '2016/04/25', '5');
+Insert into date_log values ('1001', '2016/04/26', '9');
+Insert into date_log values ('1002', '2016/04/26', '5');
+Insert into date_log values ('1003', '2016/04/26', '4');
+Insert into date_log values ('1004', '2016/04/26', '5');
+Insert into date_log values ('1005', '2016/04/26', '6');

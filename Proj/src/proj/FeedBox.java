@@ -272,6 +272,7 @@ public class FeedBox extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) Hours_Table.getModel();
             
             model.addRow(row);
+            
             }
            
         }

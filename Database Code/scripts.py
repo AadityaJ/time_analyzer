@@ -2,6 +2,9 @@ import sys
 file='db_example_date_log.csv'
 f=open(file)
 cod=f.read()
+file='dbs.sql'
+h=open(file,'w')
+sys.stdout=h 
 i=0
 cod=cod.split('\r')
 for line in cod:
