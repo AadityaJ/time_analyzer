@@ -214,7 +214,17 @@ public class FeedBox extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_NameFieldActionPerformed
-
+    public String ReturnType(int type_id){
+        switch(type_id){
+            case 1: return "Design";
+            case 2: return "Testing";
+            case 3: return "Coding";
+            case 4: return "Management";
+            case 5: return "Algorithms";
+            case 6: return "UI/UX";
+            default: return "Others";
+        }
+    }
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         Connection conn = null;
         try{
@@ -226,7 +236,8 @@ public class FeedBox extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery(print_name);
             if(rs.next()){
             NameField.setText(rs.getString("Name"));
-            TypeField.setText(rs.getString("type_id"));
+            String type_real = ReturnType(Integer.parseInt(rs.getString("type_id")));
+            TypeField.setText(type_real);
             }
             NameField.setEditable(false);
 
@@ -240,6 +251,7 @@ public class FeedBox extends javax.swing.JFrame {
 
     private void HoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HoursActionPerformed
         hrs=Integer.parseInt(Hours.getText());
+        // add hrs to the table
     }//GEN-LAST:event_HoursActionPerformed
 
     private void PrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevActionPerformed
