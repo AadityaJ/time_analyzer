@@ -306,7 +306,11 @@ public class FeedBox extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void Analyze_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Analyze_ButtonActionPerformed
-        // TODO add your handling code here:
+        // goto analyze form
+        //generate analyse form can look at date_log table
+        Analyze jf=new Analyze();
+        jf.setVisible(true);
+        jf.emp_id_val=this.emp_id_val;
     }//GEN-LAST:event_Analyze_ButtonActionPerformed
 
     private void TypeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeFieldActionPerformed
