@@ -5,6 +5,7 @@
  */
 package proj;
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author aaditya
@@ -32,6 +33,8 @@ public class FeedBox extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         NameField = new javax.swing.JTextField();
         Start = new javax.swing.JButton();
@@ -40,6 +43,24 @@ public class FeedBox extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Prev = new javax.swing.JButton();
         Register = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Hours_Table = new javax.swing.JTable();
+        Analyze_Button = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        TypeField = new javax.swing.JTextField();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,13 +103,57 @@ public class FeedBox extends javax.swing.JFrame {
             }
         });
 
+        Hours_Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Date", "Hours Worked"
+            }
+        ));
+        jScrollPane2.setViewportView(Hours_Table);
+
+        Analyze_Button.setText("Analyze");
+        Analyze_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Analyze_ButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Type");
+
+        TypeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TypeFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Prev)
+                        .addGap(26, 26, 26)
+                        .addComponent(Analyze_Button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Register))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -97,21 +162,17 @@ public class FeedBox extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Start))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(27, 27, 27)
-                                .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(Prev)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Register)
-                .addGap(62, 62, 62))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(27, 27, 27))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TypeField)
+                                    .addComponent(NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,15 +185,24 @@ public class FeedBox extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Prev)
-                    .addComponent(Register))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(TypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Register)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(Hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Prev)
+                            .addComponent(Analyze_Button))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,6 +226,7 @@ public class FeedBox extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery(print_name);
             if(rs.next()){
             NameField.setText(rs.getString("Name"));
+            TypeField.setText(rs.getString("type_id"));
             }
             NameField.setEditable(false);
 
@@ -172,7 +243,30 @@ public class FeedBox extends javax.swing.JFrame {
     }//GEN-LAST:event_HoursActionPerformed
 
     private void PrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevActionPerformed
-        // TODO add your handling code here:
+        // connect to date_log table for checking proper entry
+        Connection conn = null;
+        try{
+            conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
+            Statement stmt =(Statement) conn.createStatement();
+            String print_name;
+            System.out.println(emp_id_val);
+            print_name = "SELECT date,hours_worked FROM date_log where emp_id='"+emp_id_val+"';";
+            ResultSet rs = stmt.executeQuery(print_name);
+            while(rs.next()){
+            //System.out.println("Date "+rs.getString("date")+"Hours_worked : "+rs.getString("hours_worked"));
+            String data1 = rs.getString("date");
+            String data2 = rs.getString("hours_worked");
+            Object[] row = {data1,data2};
+            DefaultTableModel model = (DefaultTableModel) Hours_Table.getModel();
+            
+            model.addRow(row);
+            }
+           
+        }
+            
+        catch(SQLException e){
+            System.out.println("Didnot happen"+e);
+        }
     }//GEN-LAST:event_PrevActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
@@ -194,7 +288,16 @@ public class FeedBox extends javax.swing.JFrame {
         catch(SQLException e){
             System.out.println("Didnot happen"+e);
         }*/
+        System.exit(0);
     }//GEN-LAST:event_RegisterActionPerformed
+
+    private void Analyze_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Analyze_ButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Analyze_ButtonActionPerformed
+
+    private void TypeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeFieldActionPerformed
+        
+    }//GEN-LAST:event_TypeFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,13 +335,20 @@ public class FeedBox extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Analyze_Button;
     private javax.swing.JTextField Hours;
+    private javax.swing.JTable Hours_Table;
     public static javax.swing.JTextField NameField;
     private javax.swing.JButton Prev;
     private javax.swing.JButton Register;
     private javax.swing.JButton Start;
+    private javax.swing.JTextField TypeField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
