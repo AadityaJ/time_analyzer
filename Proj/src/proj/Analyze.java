@@ -22,7 +22,7 @@ public class Analyze extends javax.swing.JFrame {
     public Analyze() {
         initComponents();
     }
-
+    private String[][] date_log_empid =new String[1000][2];
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +33,8 @@ public class Analyze extends javax.swing.JFrame {
     private void initComponents() {
 
         Start = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        most_eff_date = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,21 +45,40 @@ public class Analyze extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Most Efficient Date");
+
+        most_eff_date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                most_eff_dateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(Start)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(Start))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)
+                        .addGap(38, 38, 38)
+                        .addComponent(most_eff_date, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(14, 14, 14)
                 .addComponent(Start)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(most_eff_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,10 +91,20 @@ public class Analyze extends javax.swing.JFrame {
             conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
             Statement stmt =(Statement) conn.createStatement();
             String print_name;
-            System.out.println(emp_id_val);
+            System.out.println("This"+emp_id_val);
             print_name = "SELECT date,hours_worked FROM date_log where emp_id='"+emp_id_val+"';";
             ResultSet rs = stmt.executeQuery(print_name);
+            int i=0;
+            while(rs.next()){
+                date_log_empid[i][0]=(rs.getString("date"));
+                date_log_empid[i][1]=(rs.getString("hours_worked"));
+                i++;
+            }
             
+            for(int j=0;j<i;j++) 
+                System.out.println(date_log_empid[j][0]+"  "+date_log_empid[j][1]);
+            // array stored . Now lets do our things.
+            most_eff_date.setText(most_eff_dt());
            
         }
             
@@ -81,6 +112,20 @@ public class Analyze extends javax.swing.JFrame {
             System.out.println("Didnot happen"+e);
         }
     }//GEN-LAST:event_StartActionPerformed
+    private String most_eff_dt(){
+        int max=0;
+        int index=0;
+        for(int i=0;i<this.date_log_empid.length;i++){
+            if(Integer.parseInt(date_log_empid[i][1])>max){
+                max=Integer.parseInt(date_log_empid[i][1]);
+                index=i;
+            }
+        }
+        return date_log_empid[index][0];
+    }
+    private void most_eff_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_most_eff_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_most_eff_dateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,5 +164,7 @@ public class Analyze extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Start;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField most_eff_date;
     // End of variables declaration//GEN-END:variables
 }
