@@ -19,3 +19,4 @@ Insert into values ('1003', '12/04/16', '5')
 Insert into values ('1004', '12/04/16', '8')
 Insert into values ('1005', '12/04/16', '9')
 
+Insert into value ('','','')

@@ -6,6 +6,9 @@
 package proj;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author aaditya
@@ -285,23 +288,22 @@ public class FeedBox extends javax.swing.JFrame {
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         Connection conn = null;
-       /* try{
+        try{
             conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
             Statement stmt =(Statement) conn.createStatement();
             String print_name;
             System.out.println(emp_id_val);
-            print_name = "SELECT * FROM Employee where emp_id='"+emp_id_val+"';";
-            ResultSet rs = stmt.executeQuery(print_name);
-            if(rs.next()){
-            NameField.setText(rs.getString("Name"));
-            }
-            NameField.setEditable(false);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = new Date();
+            System.out.println(dateFormat.format(date));
+            print_name = "Insert into date_log values ("+emp_id_val+","+dateFormat+","+Hours.getText()+");";
+            stmt.executeUpdate(print_name);
 
         }
             
         catch(SQLException e){
             System.out.println("Didnot happen"+e);
-        }*/
+        }
         System.exit(0);
     }//GEN-LAST:event_RegisterActionPerformed
 
