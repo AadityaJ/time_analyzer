@@ -104,7 +104,8 @@ public class Analyze extends javax.swing.JFrame {
             for(int j=0;j<i;j++) 
                 System.out.println(date_log_empid[j][0]+"  "+date_log_empid[j][1]);
             // array stored . Now lets do our things.
-            most_eff_date.setText(most_eff_dt());
+            
+            most_eff_date.setText(most_eff_dt(i));
            
         }
             
@@ -112,10 +113,10 @@ public class Analyze extends javax.swing.JFrame {
             System.out.println("Didnot happen"+e);
         }
     }//GEN-LAST:event_StartActionPerformed
-    private String most_eff_dt(){
+    private String most_eff_dt(int len){
         int max=0;
         int index=0;
-        for(int i=0;i<this.date_log_empid.length;i++){
+        for(int i=0;i<len;i++){
             if(Integer.parseInt(date_log_empid[i][1])>max){
                 max=Integer.parseInt(date_log_empid[i][1]);
                 index=i;
