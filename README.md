@@ -6,10 +6,15 @@ The idea is to make an Employee effeciency and recommendation system.
 
 * Create Analysis Table for employee.  (Done)
 * Generate More Data.   (Done)
-* Create A manager view things.
+* Create A manager view things .  (Done)
 * Make update to table possible.    (Done)
+* Add more data           (Done)
+* Add more employee with same types   (Done)
+* create a suitable view     (Done)
 * Improve front-end. 
 * Provide Manager Recommendations
-	** Add more data
-	** Add more employee with same types
-	** creat a suitable view
+	1) Provide front-end (Done)
+	2) Decide Kernel
+	3) Decide weightage
+	4) employ knn model
+	5) acutally code

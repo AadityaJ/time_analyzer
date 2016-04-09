@@ -1,0 +1,1 @@
+select emp_id,sum(hours_worked) from date_log group by emp_id;

@@ -62,6 +62,7 @@ public class Manlogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         TypeBest = new javax.swing.JTable();
+        AddProj = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -102,13 +103,13 @@ public class Manlogin extends javax.swing.JFrame {
 
         Date_log.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID", "Date", "Hours Worked"
+                "ID", "Hours Worked"
             }
         ));
         jScrollPane1.setViewportView(Date_log);
@@ -136,29 +137,40 @@ public class Manlogin extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(TypeBest);
 
+        AddProj.setText("Add Project");
+        AddProj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddProjActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(110, 110, 110)
+                            .addComponent(Start))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(66, 66, 66)
+                                    .addComponent(Top_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(Start))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(66, 66, 66)
-                                .addComponent(Top_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(119, 119, 119)
+                        .addComponent(AddProj)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -176,12 +188,14 @@ public class Manlogin extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(AddProj)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public String[][] date_log = new String[5000][3];
+    public String[][] date_log = new String[5000][2];
     public String[][] mod_date_log = new String[5000][4];
     
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
@@ -190,19 +204,18 @@ public class Manlogin extends javax.swing.JFrame {
             conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
             Statement stmt =(Statement) conn.createStatement();
             String print_name;
-            print_name = "SELECT * FROM date_log ;";
+            print_name = "select emp_id,sum(hours_worked) from date_log group by emp_id;";
             ResultSet rs = stmt.executeQuery(print_name);
             int i=0;
             while(rs.next()){
                 date_log[i][0]=(rs.getString("emp_id"));
-                date_log[i][1]=(rs.getString("date"));
-                date_log[i][2]=(rs.getString("hours_worked"));
+                date_log[i][1]=(rs.getString("sum(hours_worked)"));
                 i++;
             }
             //let it run first
             for(int j=0;j<i;j++){
-                System.out.println(date_log[j][0]+date_log[j][1]+date_log[j][2]);
-                Object[] row = {date_log[j][0],date_log[j][1],date_log[j][2]};
+                System.out.println(date_log[j][0]+date_log[j][1]);
+                Object[] row = {date_log[j][0],date_log[j][1]};
                 DefaultTableModel model = (DefaultTableModel) Date_log.getModel();
             
             model.addRow(row);
@@ -248,30 +261,24 @@ public class Manlogin extends javax.swing.JFrame {
         return in;
     }
     private String getBestEmployee(int len){
-        int[] tot=new int[5];
-        int id;
-        for(int i=0;i<len;i++){
-            switch(date_log[i][0]){
-                case "1001": tot[0]+=Integer.parseInt(date_log[i][2]);break;
-                case "1002": tot[1]+=Integer.parseInt(date_log[i][2]);break;
-                case "1003": tot[2]+=Integer.parseInt(date_log[i][2]);break;
-                case "1004": tot[3]+=Integer.parseInt(date_log[i][2]);break;
-                case "1005": tot[4]+=Integer.parseInt(date_log[i][2]);break;
-            } 
-        }
         int max=0;
         String id_picked=new String();
-        for(int i=0;i<5;i++){
-            if(tot[i]>max){
-                max=tot[i];
-                id_picked=Integer.toString(1000+i+1);
+        for(int i=0;i<len;i++){
+            if(Integer.parseInt(date_log[i][1])>max){
+                max=Integer.parseInt(date_log[i][1]);
+                id_picked=Integer.toString(i);
             }
         }
-        return id_picked;
+        return date_log[Integer.parseInt(id_picked)][0];
     }
     private void Top_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Top_empActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Top_empActionPerformed
+
+    private void AddProjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProjActionPerformed
+        Recommend rc = new Recommend();
+        rc.setVisible(true);
+    }//GEN-LAST:event_AddProjActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,6 +316,7 @@ public class Manlogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddProj;
     private javax.swing.JTable Date_log;
     private javax.swing.JButton Start;
     private javax.swing.JTextField Top_emp;
