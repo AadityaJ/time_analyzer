@@ -217,7 +217,7 @@ public class FeedBox extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_NameFieldActionPerformed
-    public String ReturnType(int type_id){
+    private String ReturnType(int type_id){
         switch(type_id){
             case 1: return "Design";
             case 2: return "Testing";
