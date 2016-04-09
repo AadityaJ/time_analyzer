@@ -10,3 +10,6 @@ The idea is to make an Employee effeciency and recommendation system.
 * Make update to table possible.    (Done)
 * Improve front-end. 
 * Provide Manager Recommendations
+	** Add more data
+	** Add more employee with same types
+	** creat a suitable view
