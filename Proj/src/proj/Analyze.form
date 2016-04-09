@@ -31,12 +31,18 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="most_eff_date" min="-2" pref="261" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="most_eff_date" min="-2" pref="261" max="-2" attributes="0"/>
+                          <Component id="tot_hours" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
+              <EmptySpace pref="112" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,7 +56,12 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="most_eff_date" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="338" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tot_hours" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="99" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,6 +84,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="most_eff_dateActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Total Hours "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tot_hours">
     </Component>
   </SubComponents>
 </Form>

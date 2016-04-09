@@ -19,6 +19,7 @@ public class Analyze extends javax.swing.JFrame {
     private static final String PASSWORD="1234";
     private static final String CONN_STRING="jdbc:mysql://localhost:3306/time_analyzer?autoReconnect=true&useSSL=false";
     public String emp_id_val;
+    public int hours_sum;
     public Analyze() {
         initComponents();
     }
@@ -35,6 +36,8 @@ public class Analyze extends javax.swing.JFrame {
         Start = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         most_eff_date = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        tot_hours = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +56,8 @@ public class Analyze extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Total Hours ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,10 +69,14 @@ public class Analyze extends javax.swing.JFrame {
                         .addComponent(Start))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addGap(38, 38, 38)
-                        .addComponent(most_eff_date, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(most_eff_date, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tot_hours, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +87,11 @@ public class Analyze extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(most_eff_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tot_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,7 +119,7 @@ public class Analyze extends javax.swing.JFrame {
             // array stored . Now lets do our things.
             
             most_eff_date.setText(most_eff_dt(i));
-           
+            tot_hours.setText(Integer.toString(hours_sum));
         }
             
         catch(SQLException e){
@@ -116,7 +129,9 @@ public class Analyze extends javax.swing.JFrame {
     private String most_eff_dt(int len){
         int max=0;
         int index=0;
+        hours_sum=0;
         for(int i=0;i<len;i++){
+            hours_sum+=Integer.parseInt(date_log_empid[i][1]);
             if(Integer.parseInt(date_log_empid[i][1])>max){
                 max=Integer.parseInt(date_log_empid[i][1]);
                 index=i;
@@ -166,6 +181,8 @@ public class Analyze extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Start;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField most_eff_date;
+    private javax.swing.JTextField tot_hours;
     // End of variables declaration//GEN-END:variables
 }
