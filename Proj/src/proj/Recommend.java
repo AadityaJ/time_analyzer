@@ -59,6 +59,11 @@ public class Recommend extends javax.swing.JFrame {
         jLabel1.setText("Experience Need");
 
         Exp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Highly", "Yes ", "No", " " }));
+        Exp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExpActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Type Information");
 
@@ -179,7 +184,59 @@ public class Recommend extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private int [][] feature_matrix = new int [1000][8];
+    private float [][] feature_matrix = new float [1000][8];
+    private float [] new_matrix = new float [8];
+    private float[] distance_matrix = new float[1000];
+    private int putvalue(String s){
+        switch (s){
+            case "Highly": return 5;
+            case "Yes": return 1;
+            case "No": return 0;
+        }
+        return 0;
+    }
+    private void normalize(int len){
+        float [] avg = new float[len];
+        for(int i=2;i<8;i++){
+            int n=0;
+            avg[i]=0;
+            for(int j=0;j<len;j++){
+                avg[i]+=this.feature_matrix[j][i];
+                if(this.feature_matrix[j][i]!=0)
+                    {n+=1;}
+            }
+            avg[i]/=n;
+            //System.out.print(avg[i]+"  ");
+        }
+        for(int i=0;i<len;i++){
+            for(int j=2;j<8;j++){
+                this.feature_matrix[i][j]/=avg[j];
+            }
+        }
+    }
+    private void dist_calc(int len){
+        // take values from swing
+        new_matrix[1]=putvalue(Exp.getSelectedItem().toString());
+        new_matrix[2]=putvalue(Desp.getSelectedItem().toString());
+        new_matrix[3]=putvalue(Testp.getSelectedItem().toString());
+        new_matrix[4]=putvalue(Codp.getSelectedItem().toString());
+        new_matrix[5]=putvalue(Manp.getSelectedItem().toString());
+        new_matrix[6]=putvalue(Alp.getSelectedItem().toString());
+        new_matrix[7]=putvalue(up.getSelectedItem().toString());
+        System.out.println("*******************************");
+        for(int i=0;i<7;i++)
+            System.out.print(new_matrix[i]);
+        for(int i=0;i<len;i++){
+            distance_matrix[i]=0;
+            for(int j=1;j<8;j++){
+                distance_matrix[i]+=((feature_matrix[i][j]-new_matrix[j])*(feature_matrix[i][j]-new_matrix[j]));
+            }
+            System.out.print(distance_matrix[i]+"  ");
+        }
+    }
+    private void knn(int len){
+        dist_calc(len);
+    } 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         Connection conn = null;
         try{
@@ -190,28 +247,37 @@ public class Recommend extends javax.swing.JFrame {
             print_name = "select emp_id,sum(hours_worked) as tot_hours,Experience,type_id from date_log natural join Employee group by emp_id;";
             ResultSet rs = stmt.executeQuery(print_name);
             while(rs.next()){
-                feature_matrix[i][0]=Integer.parseInt(rs.getString("emp_id"));
-                feature_matrix[i][1]=Integer.parseInt(rs.getString("Experience"));
+                feature_matrix[i][0]=Float.parseFloat(rs.getString("emp_id"));
+                feature_matrix[i][1]=Float.parseFloat(rs.getString("Experience"));
                 int id=Integer.parseInt(rs.getString("type_id"));
                 for(int x=2;x<8;x++){
                     if(x==(id+1)){
-                        feature_matrix[i][x]=Integer.parseInt(rs.getString("tot_hours"));
+                        feature_matrix[i][x]=Float.parseFloat(rs.getString("tot_hours"));
                         }
                     else feature_matrix[i][x]=0;
                     }
                 i++;
                 }
+            //lets normalize
+            normalize(i);
             /*for(int j=0;j<i;j++){
                 for(int x=0;x<8;x++){
                     System.out.print(feature_matrix[j][x]+"  ");
                     }
                 System.out.println();
                 }*/
+           // System.out.println(putvalue(Exp.getSelectedItem().toString()));
+           // lets calculate distance now
+            knn(i);
             }
         catch(SQLException e){
             System.out.println("Didnot happen"+e);
         }
     }//GEN-LAST:event_StartActionPerformed
+
+    private void ExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExpActionPerformed
 
     
     /**

@@ -13,8 +13,10 @@ The idea is to make an Employee effeciency and recommendation system.
 * create a suitable view     (Done)
 * Improve front-end. 
 * Provide Manager Recommendations
-	1) Provide front-end (Done)
+*	1) Provide front-end (Done)
 	2) Decide Kernel  (Done)
 	3) Decide weightage (Done)
 	4) employ knn model
 	5) acutally code
+
+	
