@@ -16,7 +16,7 @@ The idea is to make an Employee effeciency and recommendation system.
 *	1) Provide front-end (Done)
 	2) Decide Kernel  (Done)
 	3) Decide weightage (Done)
-	4) employ knn model
-	5) acutally code
+	4) employ knn model (Done)
+	5) acutally code (Done)
 
 	

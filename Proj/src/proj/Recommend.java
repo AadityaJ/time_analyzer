@@ -10,6 +10,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.Comparator;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,6 +38,8 @@ public class Recommend extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         Exp = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
@@ -53,6 +58,21 @@ public class Recommend extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         Numpep = new javax.swing.JTextField();
         Start = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        RecomendTabel = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +120,19 @@ public class Recommend extends javax.swing.JFrame {
             }
         });
 
+        RecomendTabel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Recommendations"
+            }
+        ));
+        jScrollPane2.setViewportView(RecomendTabel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,24 +140,17 @@ public class Recommend extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9))
-                                .addGap(195, 195, 195)))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Desp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Exp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,11 +160,19 @@ public class Recommend extends javax.swing.JFrame {
                             .addComponent(Alp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(up, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Numpep))
-                        .addGap(121, 121, 121))))
+                        .addGap(121, 121, 121))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(Start)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(Start))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,16 +211,18 @@ public class Recommend extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(Numpep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Start)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private float [][] feature_matrix = new float [1000][8];
     private float [] new_matrix = new float [8];
-    private float[] distance_matrix = new float[1000];
+    private float[][] distance_matrix = new float[1000][2];
     private int putvalue(String s){
         switch (s){
             case "Highly": return 5;
@@ -228,11 +264,13 @@ public class Recommend extends javax.swing.JFrame {
             System.out.print(new_matrix[i]+" ");
         System.out.println();
         for(int i=0;i<len;i++){
-            distance_matrix[i]=0;
+            distance_matrix[i][0]=feature_matrix[i][0];
+            System.out.println(feature_matrix[i][0]);
+            distance_matrix[i][1]=0;
             for(int j=1;j<8;j++){
-                distance_matrix[i]+=((feature_matrix[i][j]-new_matrix[j])*(feature_matrix[i][j]-new_matrix[j]));
+                distance_matrix[i][1]+=((feature_matrix[i][j]-new_matrix[j])*(feature_matrix[i][j]-new_matrix[j]));
             }
-            System.out.print(distance_matrix[i]+"  ");
+            System.out.println(distance_matrix[i][0]+"  "+distance_matrix[i][1]+"  ");
         }
     }
     private void knn(int len){
@@ -240,15 +278,35 @@ public class Recommend extends javax.swing.JFrame {
         int k = Integer.parseInt(Numpep.getText());
         // find the k least distances from distance matrix
         // find 1 first
-        float dist=Float.MAX_VALUE;
-        int index=0;
-        for(int i=0;i<len;i++){
-            if(distance_matrix[i]<dist){
-                index=i;
-                dist=(distance_matrix[i]);
-            }
+        // sort to get k smallest distances
+        float [] res_arr = new float[k];
+        for(int j=0;j<k;j++){
+            float dist=Float.MAX_VALUE;
+            int index=0;
+            for(int i=0;i<len;i++){
+                if(distance_matrix[i][1]<dist){
+                    index=i;
+                    dist=(distance_matrix[i][1]);
+                }
+            } 
+            res_arr[j]=feature_matrix[index][0];
+            distance_matrix[index][1]=Float.MAX_VALUE;
         }
-        System.out.println(feature_matrix[index][0]);
+        //System.out.println(feature_matrix[index][0]);
+        /*java.util.Arrays.sort(distance_matrix, new java.util.Comparator<float[]>() {
+        public int compare(float[] a, float[] b) {
+            return Float.compare(a[0], b[0]);
+            }
+        });*/
+        System.out.println("**********************************");
+        for (int i=0;i<k;i++){
+            System.out.print(" "+res_arr[i]);
+        }
+        for(int j=0;j<k;j++){
+                Object[] row = {res_arr[j]};
+                DefaultTableModel model = (DefaultTableModel) RecomendTabel.getModel();
+                model.addRow(row);
+            }
     } 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         Connection conn = null;
@@ -335,6 +393,7 @@ public class Recommend extends javax.swing.JFrame {
     private javax.swing.JComboBox Exp;
     private javax.swing.JComboBox Manp;
     private javax.swing.JTextField Numpep;
+    private javax.swing.JTable RecomendTabel;
     private javax.swing.JButton Start;
     private javax.swing.JComboBox Testp;
     private javax.swing.JLabel jLabel1;
@@ -346,6 +405,9 @@ public class Recommend extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox up;
     // End of variables declaration//GEN-END:variables
 }
