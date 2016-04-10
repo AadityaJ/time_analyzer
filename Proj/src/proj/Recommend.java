@@ -216,7 +216,7 @@ public class Recommend extends javax.swing.JFrame {
     }
     private void dist_calc(int len){
         // take values from swing
-        new_matrix[1]=putvalue(Exp.getSelectedItem().toString());
+        new_matrix[1]=(putvalue(Exp.getSelectedItem().toString()))/2;  // weightage to this is less
         new_matrix[2]=putvalue(Desp.getSelectedItem().toString());
         new_matrix[3]=putvalue(Testp.getSelectedItem().toString());
         new_matrix[4]=putvalue(Codp.getSelectedItem().toString());
@@ -225,7 +225,8 @@ public class Recommend extends javax.swing.JFrame {
         new_matrix[7]=putvalue(up.getSelectedItem().toString());
         System.out.println("*******************************");
         for(int i=0;i<7;i++)
-            System.out.print(new_matrix[i]);
+            System.out.print(new_matrix[i]+" ");
+        System.out.println();
         for(int i=0;i<len;i++){
             distance_matrix[i]=0;
             for(int j=1;j<8;j++){
@@ -236,6 +237,18 @@ public class Recommend extends javax.swing.JFrame {
     }
     private void knn(int len){
         dist_calc(len);
+        int k = Integer.parseInt(Numpep.getText());
+        // find the k least distances from distance matrix
+        // find 1 first
+        float dist=Float.MAX_VALUE;
+        int index=0;
+        for(int i=0;i<len;i++){
+            if(distance_matrix[i]<dist){
+                index=i;
+                dist=(distance_matrix[i]);
+            }
+        }
+        System.out.println(feature_matrix[index][0]);
     } 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         Connection conn = null;
