@@ -23,6 +23,9 @@ The idea is to make an Employee effeciency and recommendation system.
 * user has more to display
 * message box
 * use panels to change stuffs
+
+-- Anish
+
 * add diagrams
 	* activity diagram
 	* use case model
