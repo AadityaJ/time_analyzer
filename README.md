@@ -19,4 +19,12 @@ The idea is to make an Employee effeciency and recommendation system.
 	4) employ knn model (Done)
 	5) acutally code (Done)
 
+* Create Wieghtage matrix
+* user has more to display
+* message box
+* use panels to change stuffs
+* add diagrams
+	* activity diagram
+	* use case model
+	* sequence diagram
 	

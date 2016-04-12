@@ -58,6 +58,12 @@ public class Analyze extends javax.swing.JFrame {
 
         jLabel2.setText("Total Hours ");
 
+        tot_hours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tot_hoursActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,6 +148,10 @@ public class Analyze extends javax.swing.JFrame {
     private void most_eff_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_most_eff_dateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_most_eff_dateActionPerformed
+
+    private void tot_hoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tot_hoursActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tot_hoursActionPerformed
 
     /**
      * @param args the command line arguments
