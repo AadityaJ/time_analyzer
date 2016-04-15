@@ -11,7 +11,7 @@ The idea is to make an Employee effeciency and recommendation system.
 * Add more data           (Done)
 * Add more employee with same types   (Done)
 * create a suitable view     (Done)
-* Improve front-end. 
+* Improve front-end. (Done)
 * Provide Manager Recommendations
 *	1) Provide front-end (Done)
 	2) Decide Kernel  (Done)
@@ -21,7 +21,7 @@ The idea is to make an Employee effeciency and recommendation system.
 
 * Create Wieghtage matrix
 * user has more to display
-* message box
+* message box   (Done)
 * use panels to change stuffs
 
 -- Anish
