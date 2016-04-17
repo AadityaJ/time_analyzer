@@ -188,34 +188,39 @@ public class Login extends javax.swing.JFrame {
         //conect db with this 
         // if login id == emp_id and password == password 
         emp_id_num =Id.getText();
-        pass =password.getText();
-        Connection conn = null;
-        try{
-            conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
-            Statement stmt =(Statement) conn.createStatement();
-            String print_val;
-            print_val = "SELECT * FROM PASSWORD where emp_id='"+emp_id_num+"' and password='"+pass+"';";
-            ResultSet rs = stmt.executeQuery(print_val);
-            if(rs.next()){
-                //System.out.println("Logged In");
-                // go to next jframe
-                //usd emp_id to get to the next form
-                FeedBox f= new FeedBox();
-                f.setLocationRelativeTo(null);
-                f.setVisible(true);
-                this.setVisible(false);
-                f.emp_id_val=this.emp_id_num;
-            }
-            else {
-                //System.out.println("Not Logged In");
-                //retry
-                JOptionPane.showMessageDialog(null,"Invalid Id Password combo .Please Try Again .");
-            }
+        if(emp_id_num.equals(""))
+            JOptionPane.showMessageDialog(null,"Input ID");
+        else{
+            pass =password.getText();
+            Connection conn = null;
+            try{
+                conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
+                Statement stmt =(Statement) conn.createStatement();
+                String print_val;
+                print_val = "SELECT * FROM PASSWORD where emp_id='"+emp_id_num+"' and password='"+pass+"';";
+                ResultSet rs = stmt.executeQuery(print_val);
+                if(rs.next()){
+                    //System.out.println("Logged In");
+                    // go to next jframe
+                    //usd emp_id to get to the next form
+                    FeedBox f= new FeedBox();
+                    f.setLocationRelativeTo(null);
+                    f.setVisible(true);
+                    this.setVisible(false);
+                    f.emp_id_val=this.emp_id_num;
+                }
+                else {
+                    //System.out.println("Not Logged In");
+                    //retry
+                    JOptionPane.showMessageDialog(null,"Invalid Id Password combo .Please Try Again .");
+                }
+                
 
         }
             
         catch(SQLException e){
             System.out.println("Didnot happen"+e);
+            }
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

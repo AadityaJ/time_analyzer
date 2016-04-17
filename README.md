@@ -22,7 +22,7 @@ The idea is to make an Employee effeciency and recommendation system.
 * Create Wieghtage matrix
 * user has more to display
 * message box   (Done)
-* use panels to change stuffs
+* use panels to change stuffs (Done)
 
 -- Anish
 
@@ -31,3 +31,10 @@ The idea is to make an Employee effeciency and recommendation system.
 	* use case model
 	* sequence diagram
 	
+* Mapping to effective hours:
+	1)design : 0.9
+	2)testing : 0.75
+	3)coding : 1
+	4)management:0.8
+	5)algorithms: 1.2
+	6)UI/UX: 0.8
