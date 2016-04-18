@@ -340,13 +340,15 @@ public class FeedBox extends javax.swing.JFrame {
             System.out.println(emp_id_val);
             print_name = "SELECT date,hours_worked FROM date_log where emp_id='"+emp_id_val+"';";
             ResultSet rs = stmt.executeQuery(print_name);
+            DefaultTableModel model = (DefaultTableModel) Hours_Table.getModel();
+            model.setNumRows(0);
             while(rs.next()){
             //System.out.println("Date "+rs.getString("date")+"Hours_worked : "+rs.getString("hours_worked"));
             String data1 = rs.getString("date");
             String data2 = rs.getString("hours_worked");
             Object[] row = {data1,data2};
-            DefaultTableModel model = (DefaultTableModel) Hours_Table.getModel();
             
+
             model.addRow(row);
             
             }

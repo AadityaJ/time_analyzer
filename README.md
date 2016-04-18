@@ -21,6 +21,10 @@ The idea is to make an Employee effeciency and recommendation system.
 
 * Create Wieghtage matrix
 * user has more to display
+
+
+
+
 * message box   (Done)
 * use panels to change stuffs (Done)
 

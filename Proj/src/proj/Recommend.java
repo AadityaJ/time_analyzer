@@ -66,6 +66,7 @@ public class Recommend extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        end = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,7 +169,7 @@ public class Recommend extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Recommendations"
+                "Recommendations(ID)"
             }
         ));
         jScrollPane2.setViewportView(RecomendTabel);
@@ -183,6 +184,13 @@ public class Recommend extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("PilGi", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 0, 153));
         jLabel12.setText("Select the best people for your project");
+
+        end.setText("Done");
+        end.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,7 +216,7 @@ public class Recommend extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel11)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Start)
@@ -232,7 +240,10 @@ public class Recommend extends javax.swing.JFrame {
                             .addComponent(jLabel12)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(end)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -286,7 +297,9 @@ public class Recommend extends javax.swing.JFrame {
                     .addComponent(Start, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(end)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -373,9 +386,11 @@ public class Recommend extends javax.swing.JFrame {
         for (int i=0;i<k;i++){
             System.out.print(" "+res_arr[i]);
         }
+        DefaultTableModel model = (DefaultTableModel) RecomendTabel.getModel();
+        model.setNumRows(0);
         for(int j=0;j<k;j++){
-                Object[] row = {res_arr[j]};
-                DefaultTableModel model = (DefaultTableModel) RecomendTabel.getModel();
+                Object[] row = {(int)res_arr[j]};
+                
                 model.addRow(row);
             }
     } 
@@ -423,6 +438,11 @@ public class Recommend extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ExpActionPerformed
 
+    private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_endActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -469,6 +489,7 @@ public class Recommend extends javax.swing.JFrame {
     private javax.swing.JTable RecomendTabel;
     private javax.swing.JButton Start;
     private javax.swing.JComboBox Testp;
+    private javax.swing.JButton end;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

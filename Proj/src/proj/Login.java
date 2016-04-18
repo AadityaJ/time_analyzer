@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     private static final String USERNAME="root";
     private static final String PASSWORD="1234";
     private static final String CONN_STRING="jdbc:mysql://localhost:3306/time_analyzer?autoReconnect=true&useSSL=false";
+    PreparedStatement pst = null;
     public Login() {
         initComponents();
         getContentPane().setBackground(Color.GRAY);
@@ -190,6 +191,7 @@ public class Login extends javax.swing.JFrame {
         emp_id_num =Id.getText();
         if(emp_id_num.equals(""))
             JOptionPane.showMessageDialog(null,"Input ID");
+        
         else{
             pass =password.getText();
             Connection conn = null;
@@ -197,8 +199,12 @@ public class Login extends javax.swing.JFrame {
                 conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
                 Statement stmt =(Statement) conn.createStatement();
                 String print_val;
-                print_val = "SELECT * FROM PASSWORD where emp_id='"+emp_id_num+"' and password='"+pass+"';";
-                ResultSet rs = stmt.executeQuery(print_val);
+                print_val = "SELECT * FROM PASSWORD where emp_id=? and password=?;";
+                //ResultSet rs = stmt.executeQuery(print_val);
+                pst = conn.prepareStatement(print_val);
+                pst.setString(1,emp_id_num);
+                pst.setString(2,pass);
+                ResultSet rs = pst.executeQuery();
                 if(rs.next()){
                     //System.out.println("Logged In");
                     // go to next jframe
