@@ -368,7 +368,7 @@ public class FeedBox extends javax.swing.JFrame {
             String print_name;
             System.out.println(emp_id_val);
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = new Date();
+            Date date = new Date(); 
             System.out.println(dateFormat.format(date));
             print_name = "Insert into date_log values ('"+emp_id_val+"','"+dateFormat.format(date)+"',"+Hours.getText()+");";
             stmt.executeUpdate(print_name);

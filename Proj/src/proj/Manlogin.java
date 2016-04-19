@@ -124,7 +124,7 @@ public class Manlogin extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("PilGi", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 153));
-        jLabel1.setText("Most Working Employee");
+        jLabel1.setText("Most Effective Employee");
 
         Top_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +244,7 @@ public class Manlogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public String[][] date_log = new String[5000][2];
+    public String[][] date_log = new String[5000][3];
     public String[][] mod_date_log = new String[5000][4];
     
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
@@ -253,12 +253,13 @@ public class Manlogin extends javax.swing.JFrame {
             conn = DriverManager.getConnection(CONN_STRING,USERNAME,PASSWORD);
             Statement stmt =(Statement) conn.createStatement();
             String print_name;
-            print_name = "select emp_id,sum(hours_worked) from date_log group by emp_id;";
+            print_name = "select emp_id,sum(hours_worked),type_id from date_log natural join employee group by emp_id;";
             ResultSet rs = stmt.executeQuery(print_name);
             int i=0;
             while(rs.next()){
                 date_log[i][0]=(rs.getString("emp_id"));
                 date_log[i][1]=(rs.getString("sum(hours_worked)"));
+                date_log[i][2]=(rs.getString("type_id"));
                 i++;
             }
             print_name = "Select emp_id,Name,sum(hours),type_id from Employee natural join date_log group by emp_id;";
@@ -277,7 +278,7 @@ public class Manlogin extends javax.swing.JFrame {
             for(int j=1;j<=6;j++){
                 int index;
                 index = getBestType(Integer.toString(j),i);
-                //System.out.println(mod_date_log[index][0]+mod_date_log[index][1]+mod_date_log[index][2]+mod_date_log[index][3]);
+                System.out.println(mod_date_log[index][0]+mod_date_log[index][1]+mod_date_log[index][2]+mod_date_log[index][3]);
                 Object[] row = {ReturnType(Integer.parseInt(mod_date_log[index][3])),mod_date_log[index][1]};
                 
                 model_2.addRow(row);
@@ -286,7 +287,9 @@ public class Manlogin extends javax.swing.JFrame {
             DefaultTableModel model_1 = (DefaultTableModel) Date_log.getModel();
             model_1.setNumRows(0);
             for(int j=0;j<i;j++){
-                System.out.println(date_log[j][0]+date_log[j][1]);
+                System.out.println(date_log[j][0]+date_log[j][1]+date_log[j][2]);
+                String str = ReturnType(Integer.parseInt(date_log[j][2]));
+                System.out.println("Val:"+getval);
                 Object[] row = {date_log[j][0],date_log[j][1],(int)(Integer.parseInt(date_log[j][1])*getval)};
                 
             
