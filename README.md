@@ -22,6 +22,11 @@ The idea is to make an Employee effeciency and recommendation system.
 * Create Wieghtage matrix
 * user has more to display
 
+##Modules Involved
+* Login
+* Employee
+* Manager
+* Recommend
 
 
 
