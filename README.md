@@ -1,49 +1,28 @@
-# Time analyzer
-Project currently in the making for SE project.
-The idea is to make an Employee effeciency and recommendation system.
+Time Analyzer - ProMan16
+====================================
+### An Employee Efficiency Management and Recommendations  System
 
-##TODO
+#### Intro
+The software is be used to effectively **map the efficiency** of various employees with **different specialities** in a project team, which can be reviewed by the manager. The software also gives the ability to the Employee to see his/her own **efficiency** over a time period as well as provide a **Recommendation engine** based on __K-nearest neighbors__ for the manager to recommend employees for upcoming projects.The software uses *Java(>=version 1.7.0)* for all database connection and Recommendation engine, *MySql* for the backend and front-end is designed using *Java Swings in NetBeans*. The software was created as a part of my software engineering project.
+#### Features and Methodology
+The Software involves multiple levels of views (For example employees can see their own efficiency over the period of time but that of other employees while the manager can see efficiency of all employees). Besides this fundamental statistical features like average working hours for a particular kind of work ([see below](https://github.com/AadityaJ/time_analyzer#mapping))
+The software uses K-nearest neighbors approach( __Content Based Filtering__ ) along with a __one-against-all__ strategy for Recommendation where the manager provide features essential for the upcoming project.
 
-* Create Analysis Table for employee.  (Done)
-* Generate More Data.   (Done)
-* Create A manager view things .  (Done)
-* Make update to table possible.    (Done)
-* Add more data           (Done)
-* Add more employee with same types   (Done)
-* create a suitable view     (Done)
-* Improve front-end. (Done)
-* Provide Manager Recommendations
-*	1) Provide front-end (Done)
-	2) Decide Kernel  (Done)
-	3) Decide weightage (Done)
-	4) employ knn model (Done)
-	5) acutally code (Done)
-
-* Create Wieghtage matrix
-* user has more to display
-
-##Modules Involved
+##### Modules Involved
 * Login
 * Employee
 * Manager
 * Recommend
 
-
-
-* message box   (Done)
-* use panels to change stuffs (Done)
-
--- Anish
-
-* add diagrams
-	* activity diagram
-	* use case model
-	* sequence diagram
-	
-* Mapping to effective hours:
-	1)design : 0.9
-	2)testing : 0.75
-	3)coding : 1
-	4)management:0.8
-	5)algorithms: 1.2
-	6)UI/UX: 0.8
+#### Examples
+![Manager](http://www.aadityajamuar.net/selfplots/time-analyzer1.png)</br>
+![Recommendation](http://www.aadityajamuar.net/selfplots/time-analyzer2.png) </br>
+For more screenshots checkout the */screenshots* repo.
+##### Mapping
+Mapping to effective hours:
+* design : 0.9
+* testing : 0.75
+* coding : 1
+* management:0.8
+* algorithms: 1.2
+* UI/UX: 0.8
